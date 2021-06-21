@@ -1,6 +1,6 @@
 # importsorter README
 
-Import sorter V0.0.2 version. 
+Import sorter V0.0.3 version. 
 
 ## Features
 
@@ -77,6 +77,6 @@ This extension contributes the following settings:
 ### 0.0.1 Alpha
 
 Initial release of ImportSorter.
-### 0.0.2 Alpha
+### 0.0.3 Alpha
 
 Updated Readme
