@@ -1,49 +1,57 @@
 {
-    "rules": [
+    "rules": [ 
         {
             "originMatches": [
-                "(?:^|\\W)react(?:$|\\W)"
-            ]
+                "react"
+            ],
+            "ruleType": "Equals"
         },
         {
             "originMatches": [
-                "(?:^|\\W)react(?:$|')",
-                "(?:^|\\W)clsx(?:$|\\W)",
-                "(?:^|\\W)next(?:$|\\W)"
-            ]
+                "react",
+                "clsx",
+                "next"
+            ],
+            "ruleType": "Includes"
         },
         {
             "originMatches": [
-                "(?:^|\\W)@material-ui(?:$|\\W)"
-            ]
+                "@material-ui"
+            ],
+            "ruleType": "StartsWith"
         },
         {
             "originMatches": [
-                "(?:^|\\W)./atoms(?:$|\\W)",
-                "(?:^|\\W)/components/atoms(?:$|\\W)"
-            ]
+                "./atoms",
+                "/components/atoms"
+            ],
+            "ruleType": "StartsWith"
         },
         {
             "originMatches": [
-                "(?:^|\\W)./molecules(?:$|\\W)",
-                "(?:^|\\W)/components/molecules(?:$|\\W)"
-            ]
+                "./molecules",
+                "/components/molecules"
+            ],
+            "ruleType": "StartsWith"
         },
         {
             "originMatches": [
-                "(?:^|\\W)./organisms(?:$|\\W)",
-                "(?:^|\\W)/components/organisms(?:$|\\W)"
-            ]
+                "./organisms",
+                "/components/organisms"
+            ],
+            "ruleType": "StartsWith"
         },
         {
             "originMatches": [
-                "(?:^|\\W)./lib(?:$|\\W)"
-            ]
+                "./lib"
+            ],
+            "ruleType": "StartsWith"
         },
         {
             "originMatches": [
                 "(?:^|')./"
-            ]
+            ],
+            "ruleType": "RegEx"
         }
     ]
 }

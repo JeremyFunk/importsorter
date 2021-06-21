@@ -1,15 +1,15 @@
 import { print } from "./logger"
 
-const errorNoEditor = () => {
+export const errorNoEditor = () => {
     print('errorNoEditor')
     return
 }
 
-const errorCouldNotLoadData = () => {
+export const errorCouldNotLoadData = () => {
     print('errorCouldNotLoadData')
     return
 }
-const errorEmptyData = () => {
+export const errorEmptyData = () => {
     print('errorEmptyData')
     return
 }

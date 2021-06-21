@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { loadData } from './helpers/configManager';
+import { errorCouldNotLoadData, errorEmptyData, errorNoEditor } from './helpers/errorHandler';
 import { getImport, getOrigin, isClosingImport } from './helpers/helpers';
 import { ImportLine, ImportRule} from './types'
 
@@ -87,18 +88,7 @@ export const convertLines = (lines: ImportLine[], importRules: ImportRule[]): st
                 return
 
             //Whether line matched rule
-            let matched = false
-            if(rule.originOperatorAnd){
-                matched = rule.originMatches.every(originRule => {
-                    const match = line.origin.match(originRule)
-                    return match?.length || 0 > 0
-                })
-            }else{
-                matched = rule.originMatches.some(originRule => {
-                    const match = line.origin.match(originRule)
-                    return match?.length || 0 > 0
-                })
-            }
+            let matched = match(rule, line)
 
             if(matched){
                 //A line for this rule was found
@@ -127,6 +117,34 @@ export const convertLines = (lines: ImportLine[], importRules: ImportRule[]): st
 }
 
 
+const match = (rule: ImportRule, line: ImportLine): boolean => {
+
+    const matchPred = (rule: ImportRule, line: ImportLine, predicate: (rule: string) => boolean): boolean => {
+        if(rule.originOperatorAnd){
+            return rule.originMatches.every(originRule => predicate(originRule))
+        }else{
+            return rule.originMatches.some(originRule => predicate(originRule))
+        }
+    }
+    console.log("got",rule.ruleType)
+    switch(rule.ruleType){
+        case 'Includes':
+            return matchPred(rule, line, (rule) => line.origin.includes(rule))
+        case 'EndsWith':
+            return matchPred(rule, line, (rule) => line.origin.endsWith(rule))
+        case 'StartsWith':
+            return matchPred(rule, line, (rule) => line.origin.startsWith(rule))
+        case 'RegEx':
+            return matchPred(rule, line, (rule) => {
+                const match = line.origin.match(rule)
+                console.log(match)
+                return (match?.length || 0) > 0
+            })
+        case 'Equals':
+            return matchPred(rule, line, (rule) => line.origin === rule)
+    }
+}
+
 export const constructCode = (sortedImportLines: string[], otherCode: string): string => {
     let importText = ''
     sortedImportLines.forEach(line => importText += line + '\n')
@@ -140,17 +158,3 @@ export const writeCode = (code: string) => {
         e.replace(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(editor.document.lineCount, lastChar < 0 ? 0 : lastChar)), code )
     })
 }
-
-
-function errorEmptyData() {
-    throw new Error('Function not implemented.');
-}
-
-function errorCouldNotLoadData() {
-    throw new Error('Function not implemented.');
-}
-
-function errorNoEditor() {
-    throw new Error('Function not implemented.');
-}
-

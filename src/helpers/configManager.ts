@@ -19,13 +19,14 @@ const configPrefix = 'importSorter'
 
         const importRules: ImportRule[] = data.rules.map(rule => {
             return {
-                originMatches: rule.originMatches.map(r => new RegExp(r)),
-                importMatches: rule.importMatches?.map(r => new RegExp(r)),
+                originMatches: rule.originMatches,
+                importMatches: rule.importMatches,
                 importOperatorAnd: rule.importOperatorAnd || false,
-                originOperatorAnd: rule.originOperatorAnd || false
+                originOperatorAnd: rule.originOperatorAnd || false,
+                ruleType: rule.ruleType
             }
         })
-        importRules.push({originMatches: [new RegExp(`(?:^|')./`)]})
+        importRules.push({originMatches: [`(?:^|')./`], ruleType: 'RegEx'})
 
         console.log('loaded data')
         return importRules

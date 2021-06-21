@@ -5,13 +5,15 @@ export interface ImportLine{
 }
 
 export interface ImportRule{
+	ruleType: "RegEx" | "StartsWith" | "EndsWith" | "Includes" | 'Equals'
 	originOperatorAnd?: boolean
-	originMatches: RegExp[]
+	originMatches: string[]
 	importOperatorAnd?: boolean
-	importMatches?: RegExp[]
+	importMatches?: string[]
 }
 
 export interface ImportRuleRaw{
+	ruleType: "RegEx" | "StartsWith" | "EndsWith" | "Includes" | 'Equals'
 	originOperatorAnd?: boolean
 	originMatches: string[]
 	importOperatorAnd?: boolean

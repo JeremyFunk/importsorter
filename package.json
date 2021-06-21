@@ -34,15 +34,19 @@
 					"properties": {
 						"rules": {
 							"type": "array",
+							"description": "A list of all defined rules",
 							"items": {
 								"type": "object",
-								"description": "Mimi",
-								"title": "Test title",
+								"description": "Rule Item",
 								"properties": {
 									"originMatches": {
 										"type": "array",
 										"description": "Origin Matches",
-										"title": "Toll"
+										"title": "An array of the rules for the import origin."
+									},
+									"ruleType": {
+										"type": "string",
+										"enum": ["RegEx", "StartsWith", "EndsWith", "Includes", "Equals"]
 									}
 								}
 							}
