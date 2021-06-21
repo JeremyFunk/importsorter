@@ -62,7 +62,7 @@ const getDataByConfigPath = (): Configuration | undefined => {
 const getDataByConfigFile = (): Configuration | undefined => {
     const folders = vscode.workspace.workspaceFolders
     if(folders && folders.length > 0){
-        const path = `${folders[0].uri.fsPath}\\${configPrefix}.json`
+        const path = `${folders[0].uri.fsPath}\\import-sorter.json`
         
         if(fs.existsSync(path)){
             try{

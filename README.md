@@ -1,6 +1,6 @@
 # importsorter README
 
-Import sorter V0.0.1. Early version. 
+Import sorter V0.0.2 version. 
 
 ## Features
 
@@ -10,7 +10,7 @@ The user defines how imports are sorted via string operations or Regular Express
 Currently no default sorting option is provided, the user has to define how to sort.
 
 The configuraiton can be provided in three ways. 
-1. The extension looks for a file called 'import-sorter.json' in the root directory of your workspace. 
+1. The extension looks for a file called `import-sorter.json` in the root directory of your workspace. 
 2. If the file above does not exist, the extension will use the file path defined in the settings (`importSorter.configurationFile`)
 3. If neither the file in the root directory, nor the path in the configuration is defined, the extension will use the configuration defined directly in the settings (`importSorter.defaultSortingOptions`)
 
@@ -74,6 +74,9 @@ This extension contributes the following settings:
 ## Release Notes
 
 
-### 0.0.1
+### 0.0.1 Alpha
 
 Initial release of ImportSorter.
+### 0.0.2 Alpha
+
+Updated Readme
