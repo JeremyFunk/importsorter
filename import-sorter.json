@@ -1,0 +1,49 @@
+{
+    "rules": [
+        {
+            "originMatches": [
+                "(?:^|\\W)react(?:$|\\W)"
+            ]
+        },
+        {
+            "originMatches": [
+                "(?:^|\\W)react(?:$|')",
+                "(?:^|\\W)clsx(?:$|\\W)",
+                "(?:^|\\W)next(?:$|\\W)"
+            ]
+        },
+        {
+            "originMatches": [
+                "(?:^|\\W)@material-ui(?:$|\\W)"
+            ]
+        },
+        {
+            "originMatches": [
+                "(?:^|\\W)./atoms(?:$|\\W)",
+                "(?:^|\\W)/components/atoms(?:$|\\W)"
+            ]
+        },
+        {
+            "originMatches": [
+                "(?:^|\\W)./molecules(?:$|\\W)",
+                "(?:^|\\W)/components/molecules(?:$|\\W)"
+            ]
+        },
+        {
+            "originMatches": [
+                "(?:^|\\W)./organisms(?:$|\\W)",
+                "(?:^|\\W)/components/organisms(?:$|\\W)"
+            ]
+        },
+        {
+            "originMatches": [
+                "(?:^|\\W)./lib(?:$|\\W)"
+            ]
+        },
+        {
+            "originMatches": [
+                "(?:^|')./"
+            ]
+        }
+    ]
+}
